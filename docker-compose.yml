@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  arineta.aws.app:
+    image: ${DOCKER_REGISTRY-}arinetaawsapp
+    build:
+      context: .
+      dockerfile: Arineta.Aws.App/Dockerfile
+
+  arineta.aws.proxy.app:
+    image: ${DOCKER_REGISTRY-}arinetaawsproxyapp
+    build:
+      context: .
+      dockerfile: Arineta.Aws.Proxy.App/Dockerfile
+

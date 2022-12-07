@@ -50,8 +50,8 @@ namespace Arineta.Aws.App
                 }
                 else
                 {
-                    options.UseSqlite(Configuration.GetConnectionString("AwsCourseConnectionString"),
-                        m => m.MigrationsAssembly("Arineta.Aws.DataAccess"));
+                    options.UseNpgsql(Configuration.GetConnectionString("AwsCourseConnectionString"),
+                        builder => { builder.MigrationsAssembly("Arineta.Aws.DataAccess"); });
                 }
 
                 options.UseLazyLoadingProxies();

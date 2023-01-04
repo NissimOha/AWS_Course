@@ -19,11 +19,11 @@ FROM build AS publish
 RUN dotnet publish "Arineta.Aws.Proxy.App.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
-apt update
-apd install -y vim
-apt install -y iproute2
-apt install -u curl
-apt install -y iputils-ping
+RUN apt update
+RUN apt install -y vim
+RUN apt install -y iproute2
+RUN apt install -y curl
+RUN apt install -y iputils-ping
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Arineta.Aws.Proxy.App.dll"]
